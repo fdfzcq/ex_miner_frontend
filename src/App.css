@@ -39,3 +39,11 @@ html,body,#scatter{
  display:block;
 }
 
+.tau-chart__layout {
+  border: solid 1px gray;
+  width: 100%;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  float: left;
+}

@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   fetchData() {
-    axios.get(`http://localhost:8990/data`)
+    axios.get(`http://localhost:8990/getData`)
       .then(res => {
         const data = process(res.data.data)
         this.setState({ data });
@@ -36,12 +36,28 @@ class App extends Component {
     setInterval(() => this.fetchData(), 500);
   }
 
+  clusterData = () => {
+    // TODO: add dropdown lists to configure the input values
+    axios.post(`http://localhost:8990/clusterData`, {cluster_interval: 100}, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">ExMiner Visualizer</h1>
         </header>
+        <button onClick={this.clusterData}>
+          Do cluster
+        </button>
         <div id="scatter"></div>
       </div>
     );
