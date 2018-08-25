@@ -49,7 +49,7 @@ class App extends Component {
 
   componentDidMount() {
     this.init_chart();
-    setInterval(() => this.fetchData(), 5000000);
+    setInterval(() => this.fetchData(), this.cluster_interval);
   }
 
   request() {
